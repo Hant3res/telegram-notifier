@@ -1,4 +1,4 @@
-# Telegram Notifier Project
+# Telegram Notifier Lab
 Лабораторная работа №5
 
-Отправка уведомлений в Telegram через GitHub Actions
+Проект для отправки уведомлений в Telegram через GitHub Actions

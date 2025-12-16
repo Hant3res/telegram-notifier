@@ -3,27 +3,20 @@ name: Telegram Notification
 on: [push]
 
 jobs:
-  notify:
+  telegram-notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Send Telegram message
+      - name: Send message to Telegram
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            📢 Новый push в репозиторий!
+            🚀 Новый push!
             
-            📦 Репозиторий: ${{ github.repository }}
-            👤 Автор: ${{ github.actor }}
-            🌿 Ветка: ${{ github.ref_name }}
-            🔗 Коммит: ${GITHUB_SHA:0:7}
+            Репозиторий: ${{ github.repository }}
+            Автор: ${{ github.actor }}
+            Ветка: ${{ github.ref_name }}
             
-            📊 Посмотреть детали: 
-            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-            
-            ⏰ Время: $(date)
+            Ссылка: ${{ github.server_url }}/${{ github.repository }}/commit/${GITHUB_SHA}
           parse_mode: markdown
